@@ -1,4 +1,32 @@
 
 <base-content [title]="'预约状态'" (back)="dismiss($event)" [backtype]="2" >
-
+    <div class="bespeak_result_status">
+        <img src="assets/images/icom@2x.png">
+        <p>预约成功</p>
+    </div>
+    <div class="bespeak_result_desc">
+        中的命令需要在我们创建的目录中运行，所以我们需要在我们习惯存放文章的地方新建一个目录，建好后，右键点击Git Bash Here，
+    </div>
+    <div class="bespeak_result_qrcode">
+        <div #QCode class="QCode"></div>
+    </div>
+    <div class="bespeak_buttons">
+        <ion-grid>
+            <ion-row>
+                <ion-col col-1></ion-col>
+                <ion-col>
+                    <div class="finish" (click)="dismiss()">
+                        完成
+                    </div>
+                </ion-col>
+                <ion-col col-1></ion-col>
+                <ion-col>
+                    <div class="detail" (click)="goDetail()">
+                        查看详情
+                    </div>
+                </ion-col>
+                <ion-col col-1></ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
 </base-content> 

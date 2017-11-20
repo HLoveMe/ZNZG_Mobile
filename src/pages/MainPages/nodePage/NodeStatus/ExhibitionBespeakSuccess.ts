@@ -1,7 +1,8 @@
 
 
-import { Component ,Input} from "@angular/core";
+import { Component ,Input,ViewChild,ElementRef} from "@angular/core";
 import {NavController, ViewController, NavParams} from "ionic-angular/index";
+import { Query } from "@angular/core/src/metadata/di";
 
 @Component({
     selector:"bespeak-success",
@@ -9,13 +10,15 @@ import {NavController, ViewController, NavParams} from "ionic-angular/index";
 })
 
 export  class ExhibitionBespeakSuccess{
+    @ViewChild("QCode") code:ElementRef;
+    private qcode:any;
     constructor(
         private navC:NavController,
         private navP:NavParams,
     ){}
     ionViewDidLoad(){
         let con = this.navP.get("qcode");
-        console.log(con);
+        this.qcode = new QRCode(this.code.nativeElement,con);
     }
     dismiss(){
         this.navC.pop();

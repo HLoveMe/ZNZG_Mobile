@@ -1,0 +1,56 @@
+.bespeak_result_status{
+    margin-top: 80px;
+    text-align: center;
+}
+.bespeak_result_status img{
+    width: 40px;
+    height: 40px;
+}
+.bespeak_result_status p{
+    padding: 5px 0px;
+    margin: 0px;
+    font-size:1.6rem;
+    color: color($colors,bkcolor)
+}
+
+.bespeak_result_desc{
+    padding: 10px 30px;
+    text-align: center;
+}
+.bespeak_result_qrcode{
+    margin-top: 20px;
+}
+.bespeak_result_qrcode .QCode{
+    width: 100px;
+    height: 100px;
+    margin:0px auto;
+}
+.bespeak_buttons{
+    position: absolute;
+    left: 0;
+    right: 0px;
+    bottom: 80px;
+}
+.bespeak_buttons ion-grid ,ion-row,ion-col{
+    padding: 0px !important;
+    margin: 0px !important;
+}
+.bespeak_buttons ion-grid{
+    height: 100%;
+}
+
+.bespeak_buttons div{
+    border-radius: 22px;
+    height: 44px;
+    text-align: center;
+    line-height: 44px;
+}
+.bespeak_buttons .finish{
+    background-color: white;
+    color: color($colors,bkcolor);
+    border: 1px solid color($colors,bkcolor);
+}
+.bespeak_buttons .detail{
+    background-color: color($colors,bkcolor);
+    color: black;
+}

@@ -6,3 +6,4 @@ declare  var fengmap:any;
 
 declare  var $;
 
+declare var QRCode;
