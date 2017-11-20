@@ -1,0 +1,13 @@
+
+.user_info{
+  margin-top: 75px;
+}
+.user_info_c ion-list >button{
+  height: 105px;
+}
+ion-list > .item-block:first-child{
+  border-top: 0 !important;
+}
+ion-list >.item-block:last-child{
+  border-bottom: 0 !important;
+}
