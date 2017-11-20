@@ -1,0 +1,104 @@
+.email_get{
+    height: 40px;
+    line-height: 40px;
+    width: 60px;
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    z-index: 20;
+}
+.down_content{
+    position: absolute;
+    left: 0;
+    right: -15px;
+    top:80px;
+    bottom: 80px;
+    overflow: hidden;
+}
+.down_source{
+    height: 8.5rem;
+    
+    position: relative;
+    // border: 1px solid;
+}
+.down_source {
+    .line{
+        position: absolute;
+        bottom: 0px;
+        left: 60px;
+        right: 0px;
+        height: 1px;
+        background-color: rgb(152, 145, 158);
+    }
+    .select{
+        width: 21px;
+        height: 21px;
+        position: absolute;
+        top:0;
+        bottom: 0;
+        margin: auto;
+        left: 20px;
+    }
+    .icon{
+        //64 70
+        height:25px;
+        width: 22px;
+        position: absolute;
+        top:0;
+        bottom: 0;
+        margin: auto;
+        left: 60px;
+    }
+    .down_status{
+        height: 100%;
+        margin-left:100px ;
+    }
+    .down_status_icon{
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        top:0;
+        bottom: 0;
+        right: 20px;
+        margin: auto;
+    }
+    //状态
+    .normal{
+       line-height: 8.5rem;
+       font-size: 2rem;
+    }
+    .downloading{
+        .downloading_progress{
+            position: relative;
+            height: 6.5rem;
+            padding-top: 2rem;
+            width: 15.5rem;
+            font-size: 2rem;
+        }
+        .downloading_progress .progress_container{
+            height: 2px;
+            background-color: yellow;
+            border-radius: 1px;
+            margin-top: 3px;
+        }
+        .downloading_progress .progress{
+            height: 2px;
+            width: 10%;
+            background-color: red;
+            border-radius: 1px;
+        }
+
+        .downloading_progress .progress_status{
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            font-size: 1.2rem;
+        }
+        .downloading_progress .progress_number{
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+            font-size: 1.2rem;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+
+.bespeak .bespeak_content{
+    margin: 80px 10px 60px;
+    width: calc(100% - 20px);
+    width: -webkit-calc(100% - 20px);
+    height: calc(100% - 200px);
+    height: -webkit-calc(100% - 200px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: -webkit-calc(100% - 200px);
+    max-height: calc(100% - 200px);
+}
+.bespeak long-button{
+    position: absolute;
+    bottom: 70px;
+}

@@ -1,0 +1,21 @@
+<div class="_plan   route" id="PLAN">
+  <div class="plan_start">
+    <div class="plan_icon">
+      <img src="/assets/images/start_icon@2x.png" alt="">
+    </div>
+    <div class="plan_input">
+      <ion-input [placeholder]=" start == null ? '地图上点击起点位置' : start?.name" disabled=""></ion-input>
+    </div>
+  </div>
+  <div class="plan_end">
+    <div class="plan_icon">
+      <img src="/assets/images/end_icon@2x.png" alt="">
+    </div>
+    <div class="plan_input">
+      <ion-input [placeholder]=" end == null ? '地图上点击终点位置' : end?.name" disabled=""></ion-input>
+    </div>
+  </div>
+</div>
+<div class="plan_close" (click)="closePlan($event)">
+
+</div>

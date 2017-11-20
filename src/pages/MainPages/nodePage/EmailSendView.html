@@ -1,0 +1,12 @@
+<base-content [title]="'邮件发送'" (back)="dismiss($event)" [backtype]="2" class="email">
+    <div class="email_content email">
+        <div class="einput">
+            <img [src]="'assets/images/Mail_Icon@2x.png'" class="icon">
+            <ion-input class="email_input" [(ngModel)]="email" type="email" [placeholder]="'输入邮箱'"></ion-input>
+        </div>
+        <div class="email_desc">
+                来自美国、俄罗斯、德国、意大利、印度、肯尼亚、巴西等外国智库专家，围绕“中共十九大的主要成果和世界意义”“发展开放的中国与全球经济新机遇”“中国对外政策与世界和平发展”，与中国专家学者进行了热烈研讨、深入互动。中央文献研究室、国家发展和改革委员会、外交部等有关部门负责同志，围绕习近平新时代中国特色社会主义思想、中国对外开放政策、中国特色大国外交理念做了介绍。中国国际经济交流中心理事长曾培炎在欢迎晚宴致辞中，从多个维度阐释了中国进入新时代的丰富内涵和习近平新时代中国特色社会主义思想的重大意义。
+        </div>
+    </div>
+    <long-button [title]="'发送'" (buttonClick)="emailSend()"></long-button>
+</base-content>

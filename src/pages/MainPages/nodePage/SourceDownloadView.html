@@ -1,0 +1,40 @@
+<base-content [title] = "'资料'" [backtype]="2" (back)="dismiss()">
+    <div class="email_get" #Email>邮件获取</div>
+    <div class="down_content">
+        <ion-content>
+            <ion-list class="">
+                <div  *ngFor="let one of sources;let i = index" class="down_source">
+                    <img class="select" (click)="one.select = !one.select" [src]=" one.select ? 'assets/images/Data_Control_Selected@2x.png' : 'assets/images/Data_Control_noramal@2x.png'">
+                    <img class="icon" [src]="'assets/images/Datum/' + one.icon">
+                    <ng-container [ngSwitch]="one.download">
+                        <div *ngSwitchCase="1" class="down_status downloading">
+                            <div class="downloading_progress">
+                                {{one.raw_file_name}}
+                                <div class="progress_container">
+                                    <div [style.width.%]="one.progress" class="progress"></div>
+                                </div>
+                                <div class="progress_status">{{downStatusName(one)}}</div>
+                                <div class="progress_number">{{one.progress + "%"}}</div>
+                            </div>
+                            <img (click)="operationSource(one)" class="down_status_icon" [src]="downIconName(one)" alt="">
+                        </div>
+                        <div *ngSwitchCase="2" class="down_status normal">
+                            {{one.raw_file_name}} download finish
+                            <img (click)="operationSource(one)" class="down_status_icon" [src]="downIconName(one)" alt="">
+                        </div>
+                        <div *ngSwitchCase="-1" class="down_status">
+                            error
+                            <img (click)="operationSource(one)" class="down_status_icon" [src]="downIconName(one)" alt="">
+                        </div>
+                        <div *ngSwitchDefault class="down_status normal">
+                            <!--no normal-->
+                            {{one.raw_file_name}}
+                            <img (click)="operationSource(one)" class="down_status_icon" [src]="downIconName(one)" alt="">
+                        </div>
+                    </ng-container>
+                    <div class="line"></div>
+                </div>
+            </ion-list>
+        </ion-content>
+    </div>
+</base-content>

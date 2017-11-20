@@ -1,0 +1,22 @@
+.polygon{
+      ion-content{
+        background-color: rgba(100,100,100,0) !important;
+      }
+      .base_content{
+        background-color: rgba(1,1,1,0) !important;
+      }
+      .base_title,.base_back{
+        visibility: hidden;
+      }
+      .polygon_content{
+        background-color: white;
+        position: absolute;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        // height: calc(4rem + 10px);
+        border-radius: 10px;
+        padding: 5px 10px;
+        overflow: hidden;
+      }
+}

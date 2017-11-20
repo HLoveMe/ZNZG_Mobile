@@ -1,0 +1,42 @@
+.music_button{
+  height: 100%;
+  width: 34px;
+  display: flex !important;
+}
+.music_button  img{
+  width: 22px;
+  height:22px;
+  margin: auto;
+}
+
+.music_func{
+  position: absolute;
+  left: 76px;
+  right: 42px;
+  height: 100%;
+
+}
+.music_func ion-range{
+  position: absolute;
+  /* float: right; */
+  width: 100%;
+  bottom: 0px;
+  padding-right: 70px;
+  padding-left: 5px;
+}
+.music_func .title{
+  height: 30px;
+  line-height: 30px;
+  font-size: 1.3rem;
+  padding-left: 5px;
+  color: white;
+}
+.music_func .time{
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  height: 20px;
+  line-height: 20px;
+  font-size: 1rem;
+  color: white;;
+}

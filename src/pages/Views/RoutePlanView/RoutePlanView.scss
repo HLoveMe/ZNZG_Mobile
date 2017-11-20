@@ -1,0 +1,61 @@
+.route{
+  position: absolute;
+  background-color: white;
+  left: 10px;
+  right: 10px;
+  top: 20px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+}
+._plan{
+  div{
+    flex: 1;
+    display: flex;
+  }
+  div .plan_icon{
+    flex: 1;
+    position: relative;
+  }
+  .md .plan_icon{
+    background-color: red;
+  }
+  div .plan_icon img{
+    width: 20px;
+    height: 30px;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  div .plan_input ion-input{
+      height: 100%;
+      input{
+        font-size: 2rem;
+      }
+      .text-input-ios{
+        height: calc(100% - 11px - 11px);
+      }
+      .text-input-md{
+        height: calc(100% - 13px - 13px);
+      }
+  }
+  div .plan_input{
+    flex :6;
+  }
+
+}
+
+.plan_close{
+  position: absolute;
+  background-color: rebeccapurple;
+  width: 30px;
+  height: 30px;
+  top:20px;
+  right: 10px;
+  background:url("../assets/images/Right_Buttom_Icon_Del_Nomal@2x.png") no-repeat center center;
+  background-size: 50% 50%;
+}

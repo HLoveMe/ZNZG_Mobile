@@ -1,0 +1,44 @@
+<ion-content class="main" base-content-no-scroll>
+  <div #MapContainer id="map"></div>
+</ion-content>
+
+<!---功能-->
+<div class="Left-tool main-div" #LeftTools [@ShowStatusLeft]="mapS.isRouteNavigation ? 'hidden' : 'show'">
+  <FuncView class="func" [status]="status.Show" [type]="1" [icon]="'3d'"></FuncView>
+  <FuncView class="func" [status]="status.plannRoute" [type]="1" [icon]="'Index_Button_LeftRoad_on_normal@2x.png'"></FuncView>
+  <FuncView class="func" [status]="status.hotMap" [type]="1" [icon]="'Index_Button_Hot_on_normal@2x.png'"></FuncView>
+  <FuncView class="func" [status]="status.Location"  [type]="1" [icon]="'Index_Button_Leftfixed_on_normal@2x.png'"></FuncView>
+</div>
+<div class="floors main-div" #floors [@ShowStatusRight]="mapS.isRouteNavigation ? 'hidden' : 'show'">
+  <FuncView class="func" [status]="status.Floor"  *ngFor="let one of Map.groupIDs;let i = index" [type]="2" [floor]="i+1"></FuncView>
+</div>
+<div class="functions main-div" #Functions [@ShowStatusRight]="mapS.isRouteNavigation ? 'hidden' : 'show'">
+  <FuncView class="func" [status]="status.Scan" [type]="2" [icon]="'scan_normal@2x.png'"></FuncView>
+  <FuncView class="func" [status]="status.Panorama" [type]="2" [icon]="'quanjing_normal@2x.png'"></FuncView>
+  <FuncView class="func" [status]="status.RouteGroom" [type]="2" [icon]="'route_normal@2x.png'"></FuncView>
+  <FuncView class="func" [status]="status.MeetHall" [type]="2" [icon]="'zhanhui_normal@2x.png'"></FuncView>
+</div>
+<!---搜索框-->
+<div class="Seacher main-div" #Seach [@ShowStatusTop]="mapS.isRouteNavigation ? 'hidden' : 'show'">
+  <main-Seacher #SeacherView  [placeConetnt]="'输入内容'"></main-Seacher>
+</div>
+<!---搜索结果-->
+<seacher-result class="seac_result main-div" #SeachResult></seacher-result>
+<!---用户-->
+<div #User class="User main-div" [@ShowStatusLeft]="mapS.isRouteNavigation ? 'hidden' : 'show'">
+  <FuncView [type]="2" [icon]="'Index_Person_on@2x.png'" [status]="status.USer" ></FuncView>
+</div>
+<!---音乐播放器-->
+<div #Music  class="Music main-div" >
+  <music class="music"></music>
+</div>
+
+<div class="navigation main-div" (click)="outNavigation()" [@ShowStatusNavigation] = "mapS.isRouteNavigation ? 'show' : 'hidden'">
+    退出
+</div>
+<div class="routeplan main-div">
+    <ng-template #Routeplan>
+
+    </ng-template> 
+  <!-- <route-plan></route-plan> -->
+</div>

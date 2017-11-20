@@ -1,0 +1,19 @@
+
+<base-content [title]="title" [backtype]="1" (back)="downBack($event)">
+  <div class="setting_desc"  [ElementShowWhen]="user == null">需要登入才能使用该功能</div>
+  <img (click)="userDetail($event)" [src]="user == null ? 'assets/images/my_user_icon@2x.png' : user?.headimgurl " class="setting_image" alt="">
+  <ion-list no-lines="" class="setting_list setting_list">
+    <ion-item-group *ngFor="let group of data;let i = index">
+        <button ion-item *ngFor="let one of group.rows;let j = index" (click)="itemClick(i,j)">
+          <ion-avatar item-start="">
+              <img class="item_icon" [src]="'assets/images/' + one.icon">
+          </ion-avatar>
+
+          {{ one.title }}
+        </button>
+        <ion-item-divider class="list_group" [style.display]="group.footer ? 'block' : 'none'">
+              <div class="list_group_line"></div>
+        </ion-item-divider>
+    </ion-item-group>
+  </ion-list>
+</base-content>

@@ -1,0 +1,70 @@
+.leava{
+    .leave_content{
+        margin: 12rem 20px 0px 20px;
+        border-radius: 10px;
+        height: 18rem;
+        -webkit-user-select: auto;
+        padding: 10px 10px;
+        font-size: 1.4rem;
+        position: relative;
+        overflow-y: auto;
+        overflow-x:hidden;
+        border: 1px solid  gray;
+    }
+    .leave_number{
+        position: absolute;
+        right: 30px;
+        color: gray;
+        top: -webkit-calc(30rem - 25px);
+        top: calc(30rem - 25px);
+    }
+    .leava_images{
+        height: 12rem;
+        margin: 20px 20px;
+        margin-top: 40px;
+        position: relative;
+    }
+    .leava_images .title{
+        height:2rem;
+        line-height: 2rem;
+        font-size: 1.6rem;
+    }
+    .leava_images .images{
+        // display: flex;
+        flex-direction: row;
+        height:-webkit-calc(100% - 2rem);
+        height: calc(100% - 2rem);
+    }
+    .leava_images .images .image{
+        // flex: 1;
+        float: left;
+        height: 100%;
+        width: 33.3333333%;
+        position: relative;
+    }
+    .leava_images .number{
+        position: absolute;
+        right: 0;
+        top:0;
+    }
+    //
+    .leava_images .images .image img{
+        width: 80%;
+        height: 80%;
+        margin-left: 10%;
+        margin-top: 10%;
+    }
+    .leava_images .images .image .close{
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        right:-webkit-calc(10% - 5px);
+        right: calc(5% - 5px);
+
+        top:-webkit-calc(10% - 5px);
+        top: calc(10% - 5px);
+        background: url("../assets/images/Message_Del@2x.png");
+        background-repeat:no-repeat;
+        background-size: 80%,80%;
+    }
+}

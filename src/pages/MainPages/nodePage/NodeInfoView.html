@@ -1,0 +1,25 @@
+
+<base-content [title]="'AAAA'" (click)="dismiss($event,true)" class="info_main">
+  <div class="node_info" (click)="dismiss($event,false)">
+      <div class="info_title">
+          {{node?.title}}
+      </div>
+      <div class="info_go_detail" (click)="nodeDetail()">
+          进入详情
+      </div>
+      <div class="info_content">
+        {{node?.summary}}
+      </div>
+      <div class="info_func">
+        <div class="feed" *ngFor="let item of funcs;let index = index" (click)="FuncClick(index)">
+          <div>
+            <img [src]="item?.img" alt="">
+          </div>
+          <div class="text">
+            {{item?.title}}
+          </div>
+        </div>
+      </div>
+      <long-button (buttonClick)="goZG()" [title]="'到这个展馆'" style="margin-top: 10px;"></long-button>
+  </div>
+</base-content>

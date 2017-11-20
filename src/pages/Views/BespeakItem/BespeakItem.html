@@ -1,0 +1,29 @@
+
+    <div class="bespeak_item">
+            <div float-left class="bespeak_icon">
+                <img [src]="'assets/images/' + status.icon">
+            </div>
+            <div float-left class="bespeak_name">
+                {{status.name}}
+            </div>
+            <div class="bespeak_input_content">
+                <ng-container [ngSwitch]="status.type">
+                    <div *ngSwitchCase="1" class="bespeak_time">
+                            {{status.default}}
+                    </div>
+                    <ion-input class="bespeak_input" *ngSwitchDefault [placeholder]= "status.placeContent" 
+                        [style.paddingRight.rem]="status.type == 3 ? 7 : 0" 
+                        [type] = "status.type >= 2 ? status.type == 2 ? 'tel' : 'number' : ''"
+                        [readonly] = "!status.canEdit"
+                        [ngModel]="status.default"
+                        (ngModelChange) = "modelExchange($event)"
+                     >
+                    </ion-input>
+                </ng-container>
+                <ng-container [ngSwitch]="status.type">
+                    <button [disabled]="!codeEdit" (click)="getCode()" ion-button round small outline *ngSwitchCase="3" class="bespeak_code">
+                            {{codeText}}
+                    </button>
+                </ng-container>
+            </div>
+        </div>

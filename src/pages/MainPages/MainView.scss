@@ -1,0 +1,129 @@
+ion-content{
+  background-color: #2aa198;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: visible;
+  overflow: auto;
+}
+//地图
+.main{
+  #map{
+    width: 100%;
+    height: 100%;
+    background-color: #0d81ff;
+  }
+}
+//  悬浮功能按钮
+div[class~=main-div]{
+  z-index:20
+}
+.Left-tool{
+  position: absolute;
+  left:10px;
+  top: 0;
+  bottom:0;
+  margin: auto;
+  width: 46px;
+  height: 228px;
+  flex-direction:column;
+  overflow: hidden;
+  display: none;
+}
+.func{
+  flex: 1;
+  position: relative;
+}
+.floors{
+  position: absolute;
+  bottom:0;
+  right:10px;
+  width: 46px;
+  top: 140px;
+  flex-direction:column;
+  overflow: hidden;
+  display: none;
+}
+.functions{
+  position: absolute;
+  height: 216px;
+  width: 46px;
+  right:10px;
+  bottom:65px;
+  flex-direction:column;
+  overflow: hidden;
+  display: none;
+}
+.Seacher{
+  position: absolute;
+  top:40px;
+  left: 30px;
+  right:30px;
+  height: 40px;
+  display: none;
+  background-color: white;
+}
+.User{
+  position: absolute;
+  left:5px;
+  bottom:5px;
+  width: 60px;
+  height: 60px;
+  display: none;
+}
+.seac_result{
+  position: absolute;
+  left: 30px;
+  right:30px;
+  top: 80px;
+  max-height: 132px;
+  overflow: hidden;
+  z-index:20;
+  height: 132px;
+}
+.seac_result seacher-result{
+  width: 100%;
+  height: 132px;
+  background-color: red;
+}
+.Music{
+  position: absolute;
+  left: 0px;
+  right:0px;
+  top: 90px;
+  height: 44px;
+  display: none;
+}
+.music{
+  padding: 0px 8px;
+  background-color: red;
+  display: block;
+  height: 44px;
+  width: 100%;
+  background-color: #009cff;
+}
+.navigation{
+  position: absolute;
+  left: 20px;
+  width: 80px;
+  height:40px;
+  bottom: 20px;
+  background-color: #009cff;
+  line-height: 40px;
+  text-align: center;
+  color: white;
+  font-size: 2rem;
+  border-radius: 20px;
+}
+.routeplan{
+  position: absolute;
+  left: 0px;
+  bottom:-170px;
+  right:0px;
+  height: 170px;
+  background-color: rgba(100,100,100,0.4);
+  -webkit-transition: bottom 1s;
+  -moz-transition: bottom 1s;
+  -ms-transition: bottom 1s;
+  -o-transition: bottom 1s;
+  transition: bottom 1s;
+}

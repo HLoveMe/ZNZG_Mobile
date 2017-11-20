@@ -1,0 +1,32 @@
+.email_content{
+    margin-top: 80px;
+    // background-color: rebeccapurple;
+    padding: 0px 20px;
+}
+.email{
+    .einput{
+        position: relative;
+        border-bottom: 1px solid #d6cdcd;
+    }
+    .einput .icon{
+        width: 20px;
+        height: 14px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        left: 0px;
+    }
+    .einput .email_input{
+        margin-left: 20px;
+        padding-left: 10px;
+    }
+    .email_desc{
+        margin-top: 10px;
+        color: color($colors,fcolor);
+    }
+    long-button{
+        position: absolute;
+        bottom: 60px;
+    }
+}

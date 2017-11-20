@@ -1,0 +1,9 @@
+<ion-content #BaseContent class="base_main" base-content-no-scroll>
+    <div class="base_content" >
+      <div class="base_title">{{title}}</div>
+      <ng-content></ng-content>
+      <div class="base_back" (click)="backEvent($event)">
+        <img [src]="'assets/images/'+ (backtype == 2 ? 'Right_Buttom_Icon_Back_Nomal@2x.png' : 'Right_Buttom_Icon_Del_Nomal@2x.png') " alt="">
+      </div>
+    </div>
+</ion-content>

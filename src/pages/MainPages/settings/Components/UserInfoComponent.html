@@ -1,17 +1,17 @@
 <base-content [title]="'信息'" [backtype]="2" (back)="downBack()">
   <div class="user_info user_info_c">
       <ion-list>
-        <button  ion-item>
-            <ion-label>
+        <button  ion-item (click)="imageSelect()">
+            <div class="item_text">
               更换头像
-            </ion-label>
-            <img src="" item-right="">
+            </div>
+            <img [src]=" user == null ? 'assets/images/my_user_icon@2x.png' : user?.headimgurl " item-right="">
         </button>
         <button ion-item >
-          <ion-label>
+          <div class="item_text">
             昵称
-          </ion-label>
-          <button ion-button="" item-right="">
+          </div>
+          <button ion-button="" large clear="" color="fcolor" item-right="">
             才购物的小姑凉
           </button>
         </button>

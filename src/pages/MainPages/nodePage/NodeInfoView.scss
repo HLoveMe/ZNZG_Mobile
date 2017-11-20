@@ -1,0 +1,62 @@
+.info_main{
+  ion-content{
+    // background-color: rgba(100,100,100,0.3) !important;
+  }
+  .base_content{
+    background-color: rgba(1,1,1,0) !important;
+  }
+  .base_title,.base_back{
+    visibility: hidden;
+  }
+
+  .node_info{
+    position: absolute;
+    left: 0px;
+    right:0px;
+    bottom: 0px;
+    height: 279px;
+    background-color: white;
+    border-radius: 10px;
+  }
+  .info_title{
+    font-size: 3rem;
+    padding: 10px 20px;
+  }
+  .info_go_detail{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+  .info_content{
+    padding: 0px 20px;
+    font-size: 1.5rem;
+    /* max-height: 4.5rem; */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .info_func{
+    height: 60px;
+    margin-top: 15px;
+    display: flex;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .info_func .feed,.voice,.down{
+    flex: 1;
+    text-align: center;
+    position: relative;
+  }
+  .info_func div img{
+    width:30px;
+    height: 30px;
+    margin-top: 5px;
+  }
+  .info_func .text{
+    position: absolute;
+    left:0px;
+    right:0px;
+    bottom:5px;
+  }
+}

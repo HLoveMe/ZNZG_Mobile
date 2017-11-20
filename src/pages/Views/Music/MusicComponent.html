@@ -1,0 +1,20 @@
+
+<div float-left="" class="music_button" (click)="rePlay()">
+  <img src="assets/images/Play_Reflesh_Button_Normal@2x.png" alt="">
+</div>
+<div float-left="" class="music_button" (click)="playOrPause()">
+  <img [src]=" Audio?.paused ? 'assets/images/Play_Play_Button_Normal@2x.png' : 'assets/images/Play_Stop_Button_Normal@2x.png'" alt="">
+</div>
+<div float-left="" class="music_func">
+  <div class="title">
+    正在播放展点信息
+  </div>
+  <ion-range  [ngModel]="value" (ngModelChange)="seekTime($event)"></ion-range>
+  <div class="time">
+    {{current}}/{{duration}}
+  </div>
+</div>
+<div float-right="" class="music_button" (click)="remove()">
+  <img src="assets/images/Play_Close_Button_Normal@2x.png" alt="">
+</div>
+<audio #Audio autoplay="autoplay" [src]="music"></audio>

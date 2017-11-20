@@ -1,0 +1,31 @@
+
+<base-content  [backtype]="2" [title]="'登入'" (back)="downBack()">
+  <div class="login_content " >
+      <div class="login_content_part">
+        <ion-input type="number" [(ngModel)]="mobile" [placeholder]="'手机号码'">
+
+        </ion-input>
+      </div>
+      <div class="login_content_part">
+        <ion-input type="number" [(ngModel)]="smscode" [placeholder]="'验证码'">
+
+        </ion-input>
+        <button #Code ion-button="" round outline  (click)="getCode(Code,$event)">
+              {{buttonString}}
+        </button>
+      </div>
+  </div>
+  <long-button style="margin-top: 167px" [title]="'登入'" (buttonClick)="Login(0,$event)"></long-button>
+  <div class="there_line there_line_c">
+    <div class="line"></div>
+    <div class="text">
+      第三方登入
+    </div>
+  </div>
+  <div class="there_login there_login_c">
+    <div class="there_WeChat" (click)="Login(1)"></div>
+    <div class="there_White"></div>
+    <div class="there_QQ" (click)="Login(2)"></div>
+  </div>
+
+</base-content>

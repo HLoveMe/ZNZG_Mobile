@@ -38,14 +38,22 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  zgcolor:    #f5f5f5,
+  fcolor:     #666666,
+  bkcolor:    #4c8dfc,
 );
 
 
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
-
+$range-ios-slider-height : 20px;
+$range-ios-knob-width:10px;
+$range-ios-knob-height:10px;
+$range-ios-padding-vertical:0px;
+$range-ios-padding-horizontal:0px;
+$range-ios-bar-background-color:white;
 
 
 
@@ -86,3 +94,4 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+

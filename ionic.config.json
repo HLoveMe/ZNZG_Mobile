@@ -1,5 +1,14 @@
 {
-  "name": "ZNZG_Mobile",
-  "app_id": "",
-  "type": "ionic-angular"
+  "name": "云上展馆",
+  "app_id": "com.spacecg.space.znzg",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  },
+  "proxies": [
+    {
+      "path": "/apiv1",
+      "proxyUrl": "http://ah.vr68.com/apiv1"
+    }
+  ]
 }

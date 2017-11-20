@@ -1,0 +1,17 @@
+<base-content [title]="'留言'" (back)="dismiss($event)" [backtype]="2" class="leava">
+    <div #LeaveContent (keyup)="textInput($event)" class="leave_content" contenteditable="true">
+        
+    </div>
+    <div class="leave_number">{{ contentValue?.length }}/300</div>
+    <div class="leava_images">
+        <div class="title">相册、截图（选填）</div>
+        <div class="images">
+            <div  class="image" *ngFor="let one of showImage;let i = index" (click)="selectPhoneImage(i)">
+                    <img [src]="one.url" alt="">
+                <div (click)="removeImage($event,i)" class="close" [ElementShowWhen]= "one.isSelect" ></div>
+            </div>
+        </div>
+        <div class="number">0/3</div>
+    </div>
+    <long-button (buttonClick)="leaveSumbit()" [title]="'提交'" style="margin-top:20px"></long-button>
+</base-content> 

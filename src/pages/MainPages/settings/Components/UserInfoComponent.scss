@@ -2,9 +2,20 @@
 .user_info{
   margin-top: 75px;
 }
-.user_info_c ion-list >button{
+.user_info_c .item_text{
   height: 105px;
+  line-height: 105px;
+  padding-left: 12px;
 }
+.user_info_c button:first-child img{
+  width: 58px;
+  height:58px;
+  border-radius: 29px;
+}
+.user_info_c button button{
+  font-size: 1.4rem;
+}
+
 ion-list > .item-block:first-child{
   border-top: 0 !important;
 }

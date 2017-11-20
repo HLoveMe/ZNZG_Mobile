@@ -1,0 +1,12 @@
+<base-content [title]="'展馆预约'" (back)="dismiss($event)" [backtype]="2" class="bespeak">
+    <div class="bespeak_content">
+        <ion-list>
+            <ng-container *ngFor="let one of bespeaks;let i = index">
+                <bespeak-item [status]="one" [info]="exhibitionModel"></bespeak-item>
+            </ng-container>
+        </ion-list>
+    </div>
+    <long-button [title]="'提交'" (buttonClick)="SubmitClick()">
+
+    </long-button>
+</base-content> 

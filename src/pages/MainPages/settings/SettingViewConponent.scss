@@ -1,0 +1,46 @@
+.setting_desc{
+  position: absolute;
+  left: 25px;
+  top: 70px;
+  color: gray;
+}
+.setting_image{
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border-radius: 30px;
+  z-index: 100;
+}
+.setting_list{
+  margin-top: 100px !important;
+}
+.setting_list{
+  .list_group{
+    background-color: white;
+  }
+  .list_group_line{
+    position: absolute;
+    height: 1px;
+    background-color: color($colors,zgcolor);
+    left: 20px;
+    right:20px;
+    top: 0px;
+    bottom:0px;
+    margin: auto;
+  }
+
+  .item_icon{
+    width: 20px !important;
+    height: 21px !important;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+  ion-avatar{
+    min-width: 25px;
+  }
+}
+

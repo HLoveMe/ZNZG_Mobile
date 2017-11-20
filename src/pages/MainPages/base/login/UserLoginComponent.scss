@@ -1,0 +1,86 @@
+
+.login_content{
+  margin-top: 80px;
+  display: flex;
+  height: 150px;
+  flex-direction:column;
+}
+.login_content_part{
+  flex: 1;
+  position: relative;
+  margin-left: 20px;
+  border-bottom: 0.5px solid color($colors,zgcolor);
+}
+
+.login_content_part >ion-input{
+  position: absolute;
+  bottom: 7px;
+}
+.login_content_part input{
+  padding-left: 10px;
+}
+
+
+.login_content_part >button{
+  margin: auto;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  padding: 0px 1rem;
+}
+
+
+.there_line{
+  height: 15px;
+  position: relative;
+  margin-top: 40px;
+}
+.there_line_c {
+  .line{
+    height: 1px;
+    margin-top: 14px;
+    margin: 0px 30px;
+    padding-top: 7px;
+    border-bottom: 0.5px solid #c2c2c2;
+  }
+  .text{
+    position: absolute;
+    background-color: white;
+    padding: 0px 4px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 87px;
+    text-align: center;
+    top: 0px;
+    bottom: 0px;
+    font-size: 1rem;
+    line-height: 15px;
+    height: 15px;
+    color: #999999;
+  }
+}
+//
+
+.there_login{
+  margin-top: 15px;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+}
+.there_login >div{
+  width: 55px;
+  height: 55px;
+  background-size: cover !important;
+}
+.there_login_c{
+    .there_White{
+      visibility: hidden;
+    }
+  .there_QQ{
+    background: url('../assets/images/Loading_Button_QQ_Normal@2x.png');
+  }
+  .there_WeChat{
+    background: url('../assets/images/Loading_Button_Wechat_Normal@2x.png');
+  }
+}

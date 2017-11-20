@@ -1,0 +1,55 @@
+.bespeak_item{
+    height: 4.4rem;
+    position: relative;
+}
+.bespeak_item .bespeak_icon{
+    height: 100%;
+    width:4rem;
+    position: relative;
+ }
+ .bespeak_item .bespeak_icon img{
+     position: absolute;
+     width:21px;
+     height:21px;
+     top:0;
+     bottom: 0;
+     left:0;
+     right:0;
+     margin: auto;
+ }
+ .bespeak_item .bespeak_name{
+     height: 100%;
+     line-height: 4.4rem;
+     width: 6rem;
+     text-align: center;
+ }
+ .bespeak_item .bespeak_input_content{
+     position: absolute;
+     top: 0;
+     bottom: 0;
+     right: 0;
+     height: 100%;
+     left: 10rem;
+     display: block;
+ }
+ //
+.bespeak_input{
+     margin-top: -webkit-calc(2.2rem - 20px);
+     margin-top: calc(2.2rem - 20px);
+ }
+ .bespeak_item  .bespeak_code{
+     position: absolute;
+     right: 0px;
+     top: 0px;
+     bottom: 0px;
+     margin: auto;
+     height: 2rem;
+     right: 0.5rem;
+    //  width: 4rem;
+     font-size: 1rem;
+     padding: 5px 10px !important;
+ }
+ .bespeak_time{
+     height: 4.4rem;
+     line-height: 4.4rem;
+ }
