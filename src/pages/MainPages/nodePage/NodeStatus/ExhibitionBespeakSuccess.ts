@@ -23,4 +23,7 @@ export  class ExhibitionBespeakSuccess{
     dismiss(){
         this.navC.pop();
     }
+    goDetail(){
+        console.log("还没写 之后添加")
+    }
 }

@@ -1,16 +1,20 @@
 
 //留言
 import {Component,ElementRef,ViewChild,ViewChildren,QueryList,Renderer2} from '@angular/core';
-import {NavController, ViewController} from "ionic-angular/index";
+import {NavController, ViewController,NavParams,LoadingController,Events} from "ionic-angular/index";
 import { UserManager, UserInfo } from '../../../app/tools/UserManager';
 import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 import { ImagePicker } from '@ionic-native/image-picker';
+import { NetWorkManager, URLFactory, ResponseResult } from '../../../app/tools/NetWorkManager';
+import { NodeExhibition } from '../../../app/tools/SourceManager/NodeExhibitionManager';
+import { NetMessageNotifacation } from '../../../app/Constant';
 
 
 @Component({
     templateUrl:"./LeaveMessageView.html"
 })
 export class LeaveMessageView{
+    private node:NodeExhibition;
     private images:string[] = [];
     showImage:any[] = []
     contentValue:string = "";
@@ -22,8 +26,15 @@ export class LeaveMessageView{
         private render:Renderer2,
         private san:DomSanitizer,
         private imgPick:ImagePicker,
+        private netM:NetWorkManager,
+        private fac:URLFactory,
+        private navP:NavParams,
+        private loadV:LoadingController,
+        private events:Events,
+
     ){}
     ionViewDidLoad(){
+        this.node = this.navP.get("node");
         this.user = this.userM.user;
         this.updateImages(this.images);
     }
@@ -99,7 +110,18 @@ export class LeaveMessageView{
             target.blur();
         }
     }
-    leaveSumbit(){
 
+    leaveSumbit(){
+        let _imgs = this.images.map((value)=>{
+            return "data:image/jpeg;base64," + value
+        })
+        let loadVC = this.loadV.create({
+            enableBackdropDismiss:true
+        })
+        loadVC.present();
+        this.netM.POST(this.fac.URL("exhibition/msg"),{id:this.node.id,content:this.contentValue,album:_imgs}).subscribe((result:ResponseResult)=>{
+            loadVC.dismiss()
+            this.events.publish(NetMessageNotifacation,result.ok ? "提交成功" : "提交失败");
+        })
     }
 }

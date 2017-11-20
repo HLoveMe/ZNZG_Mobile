@@ -46,7 +46,7 @@ export class NodeInfoView{
       this.viewC.dismiss({func:1,node:this.node} as NodeShowStatus)
     }else if(index == 0){
       //留言
-      this.navM.push(this.navC,this.viewC,LeaveMessageView);
+      this.navM.push(this.navC,this.viewC,LeaveMessageView,{"node":this.node});
     }else{
       //下载
       this.navM.push(this.navC,this.viewC,SourceDownloadView,{"node":this.node})
