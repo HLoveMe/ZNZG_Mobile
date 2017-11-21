@@ -1,0 +1,22 @@
+{
+  "res_body": [
+    {
+      "time_start": "2017/11/00 09:00",
+      "id": "11",
+      "is_cancel": "0",
+      "title": "2017北京国际服务贸易交易会会议",
+      "status": 0,
+      "is_joined": "0"
+    },
+    {
+      "time_start": "2017/11/00 17:10",
+      "id": "12",
+      "is_cancel": "0",
+      "title": "澳大利亚创客登陆上海启动会",
+      "status": 1,
+      "is_joined": "0"
+    }
+  ],
+  "res_status": 1,
+  "res_msg": "成功"
+}

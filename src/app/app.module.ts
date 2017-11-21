@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
-import {IonicApp, IonicErrorHandler, IonicModule, NavController} from 'ionic-angular';
+import { ErrorHandler, NgModule ,ComponentFactoryResolver} from '@angular/core';
+import {IonicApp, IonicErrorHandler, IonicModule, NavController,NavControllerBase} from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { ZNZG } from './app.component';
@@ -39,6 +39,7 @@ import { NodeDetailView } from '../pages/MainPages/nodePage/NodeStatus/NodeDetai
 import { ExhibitionBespeak } from '../pages/MainPages/nodePage/NodeStatus/ExhibitionBespeak';
 import { BespeakItem } from '../pages/Views/BespeakItem/BespeakItem';
 import { ExhibitionBespeakSuccess } from '../pages/MainPages/nodePage/NodeStatus/ExhibitionBespeakSuccess';
+import { File } from '@ionic-native/file';
 
 @NgModule({
   declarations: [
@@ -97,7 +98,7 @@ import { ExhibitionBespeakSuccess } from '../pages/MainPages/nodePage/NodeStatus
     PXHandle,UserManager,NavFuncManager,NetWorkManager,
     {provide:HTTP_INTERCEPTORS,useClass:AuthorizationInterceptor,multi:true},//
     {provide:HTTP_INTERCEPTORS,useClass:HttpStatusErrorInterceptor,multi:true},//
-    ImagePicker,HTTP,NodeExhibitionManager,MapNavigationManager,DownloadManager,FileTransfer,
+    ImagePicker,HTTP,NodeExhibitionManager,MapNavigationManager,DownloadManager,FileTransfer,File,
   ]
 })
 export class AppModule {}

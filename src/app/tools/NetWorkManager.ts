@@ -88,7 +88,7 @@ export class URLFactory{
 }
 export class ResponseResult{
   ok:boolean;
-  result?:{[key:string]:any};
+  result?:{[key:string]:any} | [{[key:string]:any}];
   error?:any;
 }
 

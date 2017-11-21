@@ -10,7 +10,7 @@
 .down_content{
     position: absolute;
     left: 0;
-    right: -15px;
+    right: 0px;
     top:80px;
     bottom: 80px;
     overflow: hidden;
@@ -52,6 +52,7 @@
     .down_status{
         height: 100%;
         margin-left:100px ;
+        position: relative ;
     }
     .down_status_icon{
         position: absolute;

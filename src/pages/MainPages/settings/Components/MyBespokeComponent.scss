@@ -1,0 +1,42 @@
+.my_bespokes{
+  height: 100%;
+  padding: 80px 20px 60px;
+}
+
+.my_bespokes{
+  .oneBespoke{
+    border-bottom: 1px solid #aaaaaa;
+    margin-bottom: 10px;
+  }
+  .oneBespoke{
+      .title{
+        font-size: 2.4rem;
+        line-height: 2.6rem;
+        color: black;
+        max-width: calc(100% - 5rem);
+        max-width: -webkit-calc(100% - 5rem);
+        overflow : hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        font-weight: bold;
+      }
+      img{
+        width:28px;
+        height: 18px;
+        padding-left: 10px;
+        margin-top: -webkit-calc(1.3rem - 9px);
+        margin-top: calc(1.3rem - 9px);
+
+      }
+      .time{
+        color: color($colors,fcolor);
+        margin-top: 0.2rem;
+        font-size: 1.6rem;
+      }
+      .status{
+        padding: 10px 0 20px;
+      }
+  }
+}

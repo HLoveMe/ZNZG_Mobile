@@ -2,7 +2,7 @@
  * Created by zhuzihao on 2017/10/27.
  */
 import {
-  Component, ViewChild, AfterContentInit, ElementRef, Renderer2, ViewChildren, QueryList, ViewContainerRef,ComponentFactoryResolver
+  Component, ViewChild, AfterContentInit, ElementRef, Renderer2, ViewChildren, QueryList, ViewContainerRef,ComponentFactoryResolver,
 } from '@angular/core';
 import {LoadingController, Loading, ModalController, Events} from 'ionic-angular';
 import {MainFunView, MapSeachResultView} from "../Views/MainFunView/MainFunView"
@@ -19,7 +19,6 @@ import {MusicComponent} from "../Views/Music/MusicComponent";
 import {MainAnimations} from "./MainViewAnimations";
 import { RoutePlanView } from "../Views/RoutePlanView/RoutePlanView"
 import { MapNavigationManager } from "../../app/tools/Map/MapNavigationManager"
-
 
 @Component({
   selector: 'main-viewc',
@@ -146,6 +145,7 @@ export  class MainView implements AfterContentInit{
         this.polyManager = new PolygonLayerManager(this.nodeM,this.Map);
         setTimeout(()=>{this.createShowPolygon(this.Map.focusGroupID)},2000);
         this.startLocationListen();
+        this.startBlutoothStateListen();
     });
     
     //点击事件
@@ -339,7 +339,6 @@ export  class MainView implements AfterContentInit{
   startLocationListen(){
     var navi:any = navigator;
     if( navi && navi.ZQBluetooth){
-      debugger
       navi.ZQBluetooth.start((info)=>{
         this.location = {
           x:this.Map.minX + info.x,
@@ -351,6 +350,17 @@ export  class MainView implements AfterContentInit{
       })
     }
   }
+  //开启蓝牙监控
+  startBlutoothStateListen(){
+    var navi:any = navigator;
+    let de:any = navi.BluetoothDetection;
+    if(de != null){
+      de.listenBluthootState((status)=>{
+        console.log(status)
+      })
+    }
+  }
+
   //显示点击的模型单位 信息
   showNodeExhibitionInfo(node:any){
     this.nodeM.filterNodeExhibition(node.FID).subscribe((node)=>{
@@ -391,6 +401,7 @@ export  class MainView implements AfterContentInit{
   //显示路线规划视图
   showRoutePlan(){
       if(this.planView != null){return;}
+      debugger
       let fac = this.resolver.resolveComponentFactory(RoutePlanView);
       this.plan.clear();
       let comR = this.plan.createComponent(fac);

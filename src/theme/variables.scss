@@ -95,3 +95,15 @@ $range-ios-bar-background-color:white;
 @import "roboto";
 @import "noto-sans";
 
+.clearfix{
+  zoom:1;
+}
+.clearfix:after{
+  content: "";
+  display: block;
+  height: 0px;
+  overflow: hidden;
+  clear: both;
+  zoom: 1;
+}
+

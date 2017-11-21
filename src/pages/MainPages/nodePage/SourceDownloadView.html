@@ -19,7 +19,7 @@
                             <img (click)="operationSource(one)" class="down_status_icon" [src]="downIconName(one)" alt="">
                         </div>
                         <div *ngSwitchCase="2" class="down_status normal">
-                            {{one.raw_file_name}} download finish
+                            {{one.raw_file_name}}
                             <img (click)="operationSource(one)" class="down_status_icon" [src]="downIconName(one)" alt="">
                         </div>
                         <div *ngSwitchCase="-1" class="down_status">

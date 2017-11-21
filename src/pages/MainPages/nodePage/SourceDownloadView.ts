@@ -10,6 +10,7 @@ import {Events} from "ionic-angular";
 import { NetMessageNotifacation } from '../../../app/Constant';
 import { NavFuncManager } from '../base/BaseProtocol';
 import { EmailSendView } from './EmailSendView';
+
 enum DatumType {
     notKnow,TXT,Image,Video,PDF,PPT,Xls,Doc
 }
@@ -79,7 +80,7 @@ export class SourceDownloadView{
         private downM:DownloadManager,
         private render:Renderer2,
         private event:Events,
-        private navM:NavFuncManager
+        private navM:NavFuncManager,
     ){}
     ionViewDidLoad(){
         this.node = this.navP.get('node');
@@ -168,6 +169,7 @@ export class SourceDownloadView{
             //正在下载
             //取消下载
             one.download = 0;
+            one.progress = '0'
             this.downM.cancelTask(one.file_uri);
         }else if(one.download ==  2){
             //下载完成
@@ -175,7 +177,9 @@ export class SourceDownloadView{
         }else{
             //下载失败
             //重新下载
-            one.download = 1;
+            one.download = 0;
+            this.downM.cancelTask(one.file_uri);
+            this.operationSource(one);
         }
     }
     private handletask(source:FileSource,info:DownloadTaskStatus){
@@ -187,12 +191,10 @@ export class SourceDownloadView{
             source.download = -1;
             break
             case DownLoadStatus.Finish:
+            console.log(info)
             source.download = 2;
             source.progress = "100";
             break
         } 
-    }
-    emailSend(){
-
     }
 }
