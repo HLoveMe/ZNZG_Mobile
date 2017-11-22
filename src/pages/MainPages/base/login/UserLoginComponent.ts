@@ -9,6 +9,7 @@ import { NetMessageNotifacation} from "../../../../app/Constant";
 import {NetWorkManager, ResponseResult, URLFactory} from "../../../../app/tools/NetWorkManager";
 import {Observable} from "rxjs/Rx";
 import {UserManager, UserInfo} from "../../../../app/tools/UserManager";
+import {JPush} from "ionic-native";
 
 
 
@@ -35,6 +36,11 @@ export  class UserLoginComponent{
   ){}
   ionViewDidLoad(){
     this.target = this.pars.get("page") as Page;
+    JPush.getRegistrationID().then((ID:string)=>{
+      if(ID.length >= 1){
+        this.jpushID = ID;
+      }
+    })
   }
 
   getCode(code:Button,event){

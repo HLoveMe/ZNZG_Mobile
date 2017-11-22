@@ -37,7 +37,7 @@ class MeetDataModel extends  MeetHall{
        this._status = "进行中...";
        this._color = "#4c8dfc";
      }else{
-       this.join == "0" ? this._status="未参加" :  this._status="已参加";
+       this._status == "0" ? this._status="未参加" :  this._status="已参加";
        this._color = "#999999";
      }
    }
@@ -56,7 +56,7 @@ class HallDataModel extends  MeetHall{
       this._status = "进行中...";
       this._color = "#4c8dfc";
     }else{
-      this.join == "0" ? this._status="签到" :  this._status="未签到";
+      this._status == "0" ? this._status="签到" :  this._status="未签到";
       this._color = "#999999";
     }
   }
@@ -96,7 +96,7 @@ export  class MyBespokeComponent{
     let one = Observable.create((obs:Subject<MeetHall[]>)=>{
       this.netM.Get(location ? this.fanC.URL("exhibition/prelist") : "./assets/jsons/halls.json").subscribe((res:ResponseResult)=>{
         if(res.ok){
-          obs.next((res.result as Array).map((one)=>{
+          obs.next((res.result as Array<any>).map((one)=>{
             return new HallDataModel(one)
           }));
           obs.complete()
@@ -108,7 +108,7 @@ export  class MyBespokeComponent{
     let two = Observable.create((obs:Subject<MeetHall[]>)=>{
       this.netM.Get(location ? this.fanC.URL("meeting/signups") : "./assets/jsons/meets.json").subscribe((res:ResponseResult)=>{
         if(res.ok){
-          obs.next((res.result as Array).map((one)=>{
+          obs.next((res.result as Array<any>).map((one)=>{
             return new MeetDataModel(one)
           }));
           obs.complete()
@@ -125,6 +125,39 @@ export  class MyBespokeComponent{
       this.datas = value;
       console.log(value);
     })
+  }
+  operation(target:MeetHall){
+    console.log("模拟数据什么都是失败的");
+    if(target.cancel == "0"){
+        target.cancel = "1";
+        let url:string;
+        if(target instanceof  MeetDataModel){
+            url = this.fanC.URL("meeting/signup-cancel");
+        }else{
+            url = this.fanC.URL("exhibition/precannel")
+        }
+        this.netM.POST(url,{"id":target.id}).subscribe((res:ResponseResult)=>{
+          if(!res.ok){
+            target.cancel = "0";
+            //取消失败
+          }
+        })
+    }else{
+      let index = this.datas.indexOf(target);
+      delete this.datas[index];
+      let url:string;
+      if(target instanceof  MeetDataModel){
+        url = this.fanC.URL("meeting/signup-del");
+      }else{
+        url = this.fanC.URL("exhibition/predel")
+      }
+      this.netM.POST(url,{"id":target.id}).subscribe((res:ResponseResult)=>{
+        if(!res.ok){
+          //删除失败
+          this.datas.push(target);
+        }
+      })
+    }
   }
   downBack(){
     this.navC.pop();

@@ -15,6 +15,9 @@
                   <div class="status" [style.color]="one._color">
                     {{one._status}}
                   </div>
+                  <div class="button" ion-button="" round (click)="operation(one)">
+                    {{one.cancel == "0" ? "取消" : "删除"}}
+                  </div>
                 </div>
             </ion-list>
         </ion-content>

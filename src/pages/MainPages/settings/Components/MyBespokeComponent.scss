@@ -7,11 +7,12 @@
   .oneBespoke{
     border-bottom: 1px solid #aaaaaa;
     margin-bottom: 10px;
+    position: relative;
   }
   .oneBespoke{
       .title{
-        font-size: 2.4rem;
-        line-height: 2.6rem;
+        font-size: 1.8rem;
+        line-height: 2rem;
         color: black;
         max-width: calc(100% - 5rem);
         max-width: -webkit-calc(100% - 5rem);
@@ -26,8 +27,8 @@
         width:28px;
         height: 18px;
         padding-left: 10px;
-        margin-top: -webkit-calc(1.3rem - 9px);
-        margin-top: calc(1.3rem - 9px);
+        margin-top: -webkit-calc(1rem - 9px);
+        margin-top: calc(1rem - 9px);
 
       }
       .time{
@@ -37,6 +38,13 @@
       }
       .status{
         padding: 10px 0 20px;
+      }
+      .button{
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        bottom: 0px;
+        margin: auto;
       }
   }
 }

@@ -1,0 +1,6 @@
+framework module JoysuchSDK {
+  umbrella header "JoysuchSDK.h"
+
+  export *
+  module * { export * }
+}

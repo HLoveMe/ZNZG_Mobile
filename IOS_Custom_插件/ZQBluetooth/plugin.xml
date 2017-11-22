@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com.zzh.BlutetoohPlugin" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>ZQBluetooth</name>
+    <description>使用真趣配合蜂鸟云进行定位</description>
+    <author>爱上无名氏</author>
+    <js-module name="ZQBluetooth" src="www/ZQBluetooth.js">
+        <clobbers target="navigator.ZQBluetooth" />
+    </js-module>
+    <platform name="android">
+    
+    </platform>
+    <platform name="ios">
+        <header-file src="src/ios/ZQBluetooth.h" />
+        <source-file src="src/ios/ZQBluetooth.m" />
+        <framework src="src/ios/JoysuchSDK.framework" custom="true" compiler-flags="-ObjC" />
+        <framework src="CoreMotion.framework" />
+        <framework src="CoreLocation.framework" />
+        <framework src="Accelerate.framework" />
+        <framework src="CoreGraphics.framework" />
+        <framework src="QuartzCore.framework" />
+        <framework src="Corebluetooth.framework" />
+        <framework src="libsqlite3.tbd" />
+        <framework src="libc++.tbd" />
+        <framework src="libz.tbd" />
+        <framework src="libxml2.tbd" />
+        <config-file target="*-Info.plist" parent="NSLocationUsageDescription">
+                <string>定位权限</string>
+        </config-file>
+        <config-file target="*-Info.plist" parent="NSLocationWhenInUseUsageDescription">
+                <string>定位权限</string>
+        </config-file>
+        <config-file target="*-Info.plist" parent="NSBluetoothPeripheralUsageDescription">
+                <string>蓝牙</string>
+        </config-file>
+        <config-file target="config.xml" parent="/*">
+            <feature name="ZQBluetooth">
+                <param name="ios-package" value= "ZQBluetooth"/>
+                <param name="onload" value="true"/>
+            </feature>
+        </config-file>
+    </platform>
+</plugin>

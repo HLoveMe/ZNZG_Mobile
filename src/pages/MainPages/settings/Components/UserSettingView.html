@@ -1,0 +1,17 @@
+<base-content [title]="'设置'" [backtype]="2" (back)="downBack($event)" >
+    <div class="setting">
+        <ion-list>
+          <div ion-item class="notifacation">
+            <ion-label>
+              推送提醒
+            </ion-label>
+            <ion-toggle  [(ngModel)]="toggle" color="secondary" item-right=""></ion-toggle>
+          </div>
+          <a ion-item class="cache" (click)="clearCache()">
+            <ion-label>
+              清除缓存
+            </ion-label>
+          </a>
+        </ion-list>
+    </div>
+</base-content>

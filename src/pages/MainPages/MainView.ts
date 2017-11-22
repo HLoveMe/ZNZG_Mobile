@@ -4,7 +4,7 @@
 import {
   Component, ViewChild, AfterContentInit, ElementRef, Renderer2, ViewChildren, QueryList, ViewContainerRef,ComponentFactoryResolver,
 } from '@angular/core';
-import {LoadingController, Loading, ModalController, Events} from 'ionic-angular';
+import {LoadingController, Loading, ModalController, Events, AlertController, Platform} from 'ionic-angular';
 import {MainFunView, MapSeachResultView} from "../Views/MainFunView/MainFunView"
 import { MainFunType,MainFunViewManager ,MainFunTypeInstance,MainFuncMessage} from "../Views/MainFunView/MainFuncManager"
 import {MainSeacherView, SeachStatus, InputStatus} from "../Views/Seacher/MainSeacherView"
@@ -19,6 +19,7 @@ import {MusicComponent} from "../Views/Music/MusicComponent";
 import {MainAnimations} from "./MainViewAnimations";
 import { RoutePlanView } from "../Views/RoutePlanView/RoutePlanView"
 import { MapNavigationManager } from "../../app/tools/Map/MapNavigationManager"
+import {JPush} from "ionic-native";
 
 @Component({
   selector: 'main-viewc',
@@ -64,14 +65,17 @@ export  class MainView implements AfterContentInit{
               private nodeM:NodeExhibitionManager,
               private resolver:ComponentFactoryResolver,
               private mapS:MapNavigationManager,
-            
+              private alertC:AlertController,
+              private pla:Platform
+
   ){
     this.status  =  new  MainFunTypeInstance();
     this.manager = new MainFunViewManager();
   }
 
   ionViewDidEnter(){
-      this.configEvents();
+    this.configEvents();
+    this.startNotifation();
   }
   ngAfterContentInit(){
     this.Map = new fengmap.FMMap({
@@ -147,7 +151,7 @@ export  class MainView implements AfterContentInit{
         this.startLocationListen();
         this.startBlutoothStateListen();
     });
-    
+
     //点击事件
     this.Map.on("mapClickNode",(model)=>{
         switch (model.nodeType){
@@ -162,7 +166,6 @@ export  class MainView implements AfterContentInit{
           case fengmap.FMNodeType.MODEL:
             if(model.typeID == "30000"){return;}//墙
             if(this.planView != null){
-              console.log(model)
               this.planView.setPointValue(model);
               return;
             }
@@ -217,7 +220,7 @@ export  class MainView implements AfterContentInit{
     this.manager.setOperation(this.render);
     this.mapS.map = this.Map;
   }
-  //显示 更新 坐标点 
+  //显示 更新 坐标点
   showLocation(){
     if(this.locationMaker == null){
         this.locationMaker = new fengmap.FMLocationMarker({
@@ -231,7 +234,7 @@ export  class MainView implements AfterContentInit{
       x:this.location.x,
       y:this.location.y,
       groupID:this.location.floorID,
-      zOffset:1  
+      zOffset:1
     })
   }
   //监听功能回调
@@ -275,8 +278,6 @@ export  class MainView implements AfterContentInit{
 
             break;
           case MainFunType.Seacher:
-            console.log(one.content);
-
             let InputS = one.content as SeachStatus;
             switch (InputS.status){
               case InputStatus.Begin:
@@ -355,8 +356,29 @@ export  class MainView implements AfterContentInit{
     var navi:any = navigator;
     let de:any = navi.BluetoothDetection;
     if(de != null){
-      de.listenBluthootState((status)=>{
-        console.log(status)
+      de.listenBluthootState((status:number)=>{
+        switch (status){
+          case 1:
+          case 2:
+          case 3:{
+              break;
+          }
+          case 4:{
+            this.alertC.create({
+              title:"开启蓝牙",
+              subTitle:"定位根准确",
+              enableBackdropDismiss:false,
+              buttons:[{
+                text:"确定",
+                handler:()=>{
+                  de.openBluthootSetting();
+                }
+              },{
+                text:"取消",
+              }]
+            }).present();
+          }
+        }
       })
     }
   }
@@ -410,5 +432,46 @@ export  class MainView implements AfterContentInit{
         this.plan.clear();
         this.planView = null;
       }
+  }
+  //  JPush 配置
+  startNotifation(){
+    // JPush.getUserNotificationSettings();
+    if(!this.pla.is("cordova")){return;}
+    JPush.init().then((res)=>{
+      console.log("JPush 初始化",res);
+    },(e)=>{
+      console.log("JPush 初始化",e);
+    })
+    //接受消息
+
+
+    document.addEventListener("jpush.openNotification",(event)=>{
+      /** 点击通知 */
+      if(window.device.platform == "iOS"){
+        let content = event.aps;
+      }else{
+        let content = event.alert;
+      }
+    },false);
+
+    document.addEventListener("jpush.receiveNotification", function (event) {
+      /**前台收到消息*/
+      var alertContent
+      if(device.platform == "Android") {
+        alertContent = event.alert
+      } else {
+        alertContent = event.aps.alert
+      }
+    }, false)
+
+    document.addEventListener("jpush.receiveMessage", function (event) {
+      /**自定义消息*/
+      var message
+      if(device.platform == "Android") {
+        message = event.message;
+      } else {
+        message = event.content;
+      }
+    }, false)
   }
 }

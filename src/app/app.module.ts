@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule ,ComponentFactoryResolver} from '@angular/core';
-import {IonicApp, IonicErrorHandler, IonicModule, NavController,NavControllerBase} from 'ionic-angular';
+import { ErrorHandler, NgModule} from '@angular/core';
+import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { ZNZG } from './app.component';
@@ -40,7 +40,8 @@ import { ExhibitionBespeak } from '../pages/MainPages/nodePage/NodeStatus/Exhibi
 import { BespeakItem } from '../pages/Views/BespeakItem/BespeakItem';
 import { ExhibitionBespeakSuccess } from '../pages/MainPages/nodePage/NodeStatus/ExhibitionBespeakSuccess';
 import { File } from '@ionic-native/file';
-
+import {UserSettingView} from "../pages/MainPages/settings/Components/UserSettingView";
+import {AppAboutView} from "../pages/MainPages/settings/Components/AppAboutView";
 @NgModule({
   declarations: [
     ZNZG,
@@ -52,13 +53,15 @@ import { File } from '@ionic-native/file';
     MapSeachResultView,
     MusicComponent,RoutePlanView,EmailSendView,NodeDetailView,ExhibitionBespeak,BespeakItem,ExhibitionBespeakSuccess,
 
+    NodeInfoView,ExhibitionPolygonInfoView,
+    LeaveMessageView,SourceDownloadView,
+
     MainView,
     SettingViewConponent,
     MyBespokeComponent,
     UserLoginComponent,
     UserInfoComponent,
-    NodeInfoView,ExhibitionPolygonInfoView,
-    LeaveMessageView,SourceDownloadView,
+    UserSettingView,AppAboutView,
 
     //指令
     ElementShowStatus,
@@ -82,13 +85,15 @@ import { File } from '@ionic-native/file';
     MainSeacherView,MainFunView,CustomButton,MapSeachResultView,
     MusicComponent,RoutePlanView,ExhibitionPolygonInfoView,
     LeaveMessageView,SourceDownloadView,EmailSendView,NodeDetailView,ExhibitionBespeak,BespeakItem,ExhibitionBespeakSuccess,
-    
+
+    NodeInfoView,
+
     MainView,
     SettingViewConponent,
     MyBespokeComponent,
     UserLoginComponent,
     UserInfoComponent,
-    NodeInfoView,
+    UserSettingView,AppAboutView,
 
   ],
   providers: [
@@ -98,7 +103,8 @@ import { File } from '@ionic-native/file';
     PXHandle,UserManager,NavFuncManager,NetWorkManager,
     {provide:HTTP_INTERCEPTORS,useClass:AuthorizationInterceptor,multi:true},//
     {provide:HTTP_INTERCEPTORS,useClass:HttpStatusErrorInterceptor,multi:true},//
-    ImagePicker,HTTP,NodeExhibitionManager,MapNavigationManager,DownloadManager,FileTransfer,File,
+    ImagePicker,HTTP,NodeExhibitionManager,MapNavigationManager,DownloadManager,FileTransfer,File
   ]
 })
 export class AppModule {}
+

@@ -9,6 +9,8 @@ import {UserManager, UserInfo} from "../../../app/tools/UserManager";
 import {MyBespokeComponent} from "./Components/MyBespokeComponent";
 import { NavFuncManager} from "../base/BaseProtocol";
 import {UserInfoComponent} from "./Components/UserInfoComponent";
+import {UserSettingView} from "./Components/UserSettingView";
+import {AppAboutView} from "./Components/AppAboutView";
 
 @Component({
   templateUrl:"SettingViewConponent.html"
@@ -43,8 +45,16 @@ export  class  SettingViewConponent{
   itemClick(group,row){
     if (group == 0){
       if (row == 0){
-        this.navManager.push(this.navC,this.viewCtrl,MyBespokeComponent)
+        this.navManager.push(this.navC,this.viewCtrl,MyBespokeComponent);
       }
+    }else if(group == 2){
+      if (row == 0){
+        this.navManager.push(this.navC,this.viewCtrl,UserSettingView);
+      }else if(row == 1){
+        this.navManager.push(this.navC,this.viewCtrl,AppAboutView);
+      }
+    }else{
+
     }
   }
   //退出

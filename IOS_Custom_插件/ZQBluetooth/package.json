@@ -1,0 +1,8 @@
+{
+  "name": "ZQBluetooth",
+  "version": "1.0.0",
+  "description": "真趣",
+  "main": "index.js",
+  "author": "zzh",
+  "license": "ISC"
+}
