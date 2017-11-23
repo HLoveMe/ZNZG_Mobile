@@ -10,7 +10,7 @@ import { MainFunType,MainFunViewManager ,MainFunTypeInstance,MainFuncMessage} fr
 import {MainSeacherView, SeachStatus, InputStatus} from "../Views/Seacher/MainSeacherView"
 import { SettingViewConponent } from "./settings/SettingViewConponent"
 import {NetMessageNotifacation} from "../../app/Constant";
-import {NetWorkManager} from "../../app/tools/NetWorkManager";
+
 import {PolygonLayerManager} from "../../app/tools/SourceManager/PolygonLayerManager";
 import {NodeExhibitionManager, NodeExhibition} from "../../app/tools/SourceManager/NodeExhibitionManager";
 import {NodeInfoView, NodeShowStatus} from "./nodePage/NodeInfoView";
@@ -20,6 +20,8 @@ import {MainAnimations} from "./MainViewAnimations";
 import { RoutePlanView } from "../Views/RoutePlanView/RoutePlanView"
 import { MapNavigationManager } from "../../app/tools/Map/MapNavigationManager"
 import {JPush} from "ionic-native";
+import LocationSocketManager from "../../app/tools/SourceManager/LocationSocketManager";
+import {UserManager, UserInfo} from "../../app/tools/UserManager";
 
 @Component({
   selector: 'main-viewc',
@@ -36,6 +38,7 @@ export  class MainView implements AfterContentInit{
   Map:any;
   locationMaker:any; //我的点
   currentMaker:any; //当前选择的模型
+  userI?:UserInfo;  //当前用户
   @ViewChild("MapContainer") container:ElementRef;//地图
   @ViewChild("LeftTools") leftTools:ElementRef;
   @ViewChild("floors") Floor:ElementRef;//楼层
@@ -56,17 +59,18 @@ export  class MainView implements AfterContentInit{
   private polyManager:PolygonLayerManager; //围栏管理
   private location:any;//我的位置
   private planView:RoutePlanView;
+  private updateMan:LocationSocketManager;
   constructor(
               private render:Renderer2,
               private loadC:LoadingController,
               private modal:ModalController,
               private events:Events,
-              private http:NetWorkManager,
               private nodeM:NodeExhibitionManager,
               private resolver:ComponentFactoryResolver,
               private mapS:MapNavigationManager,
               private alertC:AlertController,
-              private pla:Platform
+              private pla:Platform,
+              private userM:UserManager
 
   ){
     this.status  =  new  MainFunTypeInstance();
@@ -150,6 +154,16 @@ export  class MainView implements AfterContentInit{
         setTimeout(()=>{this.createShowPolygon(this.Map.focusGroupID)},2000);
         this.startLocationListen();
         this.startBlutoothStateListen();
+
+        this.userM.userSubject.subscribe((info:UserInfo)=>{
+            if(info != null && this.userI == null){
+              this.userI = info;
+              console.log("开启socket 上传");
+              this.updateMan = new LocationSocketManager(this.mapS,info.uid);
+              this.updateMan.startLocationUpdate();
+            }
+        });
+
     });
 
     //点击事件
@@ -347,7 +361,10 @@ export  class MainView implements AfterContentInit{
           groupID:info.groupID,
         };
         this.showLocation();
+        //检测围栏
         this.nodeExhibitionShowInfo(this.polyManager.checkPoint(this.location));
+        //记录点上传
+        this.updateMan != null && this.updateMan.updatePoint(this.location);
       })
     }
   }
@@ -436,7 +453,7 @@ export  class MainView implements AfterContentInit{
   //  JPush 配置
   startNotifation(){
     // JPush.getUserNotificationSettings();
-    if(!this.pla.is("cordova")){return;}
+
     JPush.init().then((res)=>{
       console.log("JPush 初始化",res);
     },(e)=>{
@@ -447,30 +464,30 @@ export  class MainView implements AfterContentInit{
 
     document.addEventListener("jpush.openNotification",(event)=>{
       /** 点击通知 */
-      if(window.device.platform == "iOS"){
-        let content = event.aps;
+      if(this.pla.is("ios")){
+        // let content = event.aps;
       }else{
-        let content = event.alert;
+        // let content = event.alert;
       }
     },false);
 
     document.addEventListener("jpush.receiveNotification", function (event) {
       /**前台收到消息*/
       var alertContent
-      if(device.platform == "Android") {
-        alertContent = event.alert
+      if(this.pla.is("android")) {
+        // alertContent = event.alert
       } else {
-        alertContent = event.aps.alert
+        // alertContent = event.aps.alert
       }
     }, false)
 
     document.addEventListener("jpush.receiveMessage", function (event) {
       /**自定义消息*/
       var message
-      if(device.platform == "Android") {
-        message = event.message;
+      if(this.pla.is("android")) {
+        // message = event.message;
       } else {
-        message = event.content;
+        // message = event.content;
       }
     }, false)
   }
